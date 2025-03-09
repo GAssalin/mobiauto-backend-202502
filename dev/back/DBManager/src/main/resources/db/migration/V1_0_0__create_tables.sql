@@ -1,0 +1,42 @@
+CREATE TABLE pagamentos (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    valor DECIMAL(10,2) NOT NULL,
+    metodo_pagamento VARCHAR(20) NOT NULL,
+    status VARCHAR(20) NOT NULL,
+    data_criacao TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    data_confirmacao TIMESTAMP NULL,
+    pedido_id BIGINT NOT NULL
+) ENGINE=InnoDB;
+
+CREATE TABLE transacoes (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    codigo_transacao VARCHAR(255) NOT NULL UNIQUE,
+    valor DECIMAL(10,2) NOT NULL,
+    data_processamento TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    pagamento_id BIGINT NOT NULL,
+    CONSTRAINT fk_transacao_pagamento FOREIGN KEY (pagamento_id) REFERENCES pagamentos(id) ON DELETE CASCADE
+) ENGINE=InnoDB;
+
+CREATE TABLE pedidos (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    cliente_id BIGINT NOT NULL,
+    status VARCHAR(20) NOT NULL,
+    tipo VARCHAR(20) NOT NULL,
+    data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB;
+
+CREATE TABLE veiculos (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    marca VARCHAR(50) NOT NULL,
+    modelo VARCHAR(50) NOT NULL,
+    ano INT NOT NULL,
+    preco DECIMAL(10,2) NOT NULL
+) ENGINE=InnoDB;
+
+CREATE TABLE pedidos_veiculos (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    pedido_id BIGINT NOT NULL,
+    veiculo_id BIGINT NOT NULL,
+    FOREIGN KEY (pedido_id) REFERENCES pedidos(id) ON DELETE CASCADE,
+    FOREIGN KEY (veiculo_id) REFERENCES veiculos(id) ON DELETE CASCADE
+) ENGINE=InnoDB;
