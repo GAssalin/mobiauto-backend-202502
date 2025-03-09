@@ -5,7 +5,6 @@ import java.time.LocalDateTime;
 
 import br.com.mobiauto.pagamentos.model.MetodoPagamento;
 import br.com.mobiauto.pagamentos.model.StatusPagamento;
-import br.com.mobiauto.pagamentos.model.Transacao;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,7 +18,7 @@ public class PagamentoDto {
     private StatusPagamento status;
     private LocalDateTime dataCriacao;
     private LocalDateTime dataConfirmacao;
-    private Transacao transacao;
+    private Long transacaoId;
     private Long pedidoId;
 	
 }

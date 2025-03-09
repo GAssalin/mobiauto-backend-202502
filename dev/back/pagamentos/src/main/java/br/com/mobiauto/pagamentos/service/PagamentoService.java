@@ -56,6 +56,9 @@ public class PagamentoService {
 
 	@Transactional
     public void excluirPagamento(Long id) {
+		if (!pagamentoRepository.existsById(id)) {
+            throw new EntityNotFoundException("Pagamento não encontrado");
+        }
 		pagamentoRepository.deleteById(id);
     }
 

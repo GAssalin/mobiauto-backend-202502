@@ -41,7 +41,7 @@ public class TransacaoService {
 
     @Transactional
     public TransacaoDto criarTransacao(TransacaoDto dto) {
-        Pagamento pagamento = pagamentoRepository.findById(dto.getPagamento().getId())
+        Pagamento pagamento = pagamentoRepository.findById(dto.getPagamentoId())
                 .orElseThrow(() -> new EntityNotFoundException("Pagamento não encontrado"));
 
         Transacao transacao = modelMapper.map(dto, Transacao.class);
