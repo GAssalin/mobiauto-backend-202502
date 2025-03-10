@@ -16,9 +16,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.mobiauto.pedidos.dto.CriarPedidoDTO;
 import br.com.mobiauto.pedidos.dto.PedidoDTO;
 import br.com.mobiauto.pedidos.model.StatusPedido;
+import br.com.mobiauto.pedidos.record.AtualizarPedidoRecord;
+import br.com.mobiauto.pedidos.record.CriarPedidoRecord;
 import br.com.mobiauto.pedidos.service.PedidoService;
 
 @RestController
@@ -39,13 +40,13 @@ public class PedidoController {
     }
 
     @PostMapping
-    public ResponseEntity<PedidoDTO> criarPedido(@RequestBody CriarPedidoDTO dto) {
+    public ResponseEntity<PedidoDTO> criarPedido(@RequestBody CriarPedidoRecord dto) {
         PedidoDTO novoPedido = pedidoService.criarPedido(dto);
         return ResponseEntity.status(HttpStatus.CREATED).body(novoPedido);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<PedidoDTO> atualizarPedido(@PathVariable Long id, @RequestBody PedidoDTO dto) {
+    public ResponseEntity<PedidoDTO> atualizarPedido(@PathVariable Long id, @RequestBody AtualizarPedidoRecord dto) {
         return ResponseEntity.ok(pedidoService.atualizarPedido(id, dto));
     }
 
