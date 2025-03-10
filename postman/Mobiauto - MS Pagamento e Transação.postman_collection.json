@@ -1,0 +1,251 @@
+{
+	"info": {
+		"_postman_id": "c8958c36-68ea-422b-ab13-f55f1bad6c3e",
+		"name": "Mobiauto - MS Pagamento e Transação",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14706560"
+	},
+	"item": [
+		{
+			"name": "Pagamentos",
+			"item": [
+				{
+					"name": "Listar todos os pagamentos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/pagamentos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"pagamentos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obter pagamento por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/pagamentos/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"pagamentos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Criar pagamento",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"valor\": 150.75,\n  \"metodoPagamento\": \"PIX\",\n  \"status\": \"PENDENTE\",\n  \"pedidoId\": 1001\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/pagamentos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"pagamentos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar pagamento",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"valor\": 200.00,\n  \"metodoPagamento\": \"CARTAO_CREDITO\",\n  \"status\": \"APROVADO\",\n  \"pedidoId\": 1001\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/pagamentos/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"pagamentos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Excluir pagamento",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/pagamentos/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"pagamentos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Confirmar pagamento",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/pagamentos/1/confirmar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"pagamentos",
+								"1",
+								"confirmar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Alterar status do pagamento",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/pagamentos/1/status?status=APROVADO",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"pagamentos",
+								"1",
+								"status"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "APROVADO"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Transações",
+			"item": [
+				{
+					"name": "Listar todas as transações",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/transacoes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"transacoes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obter transação por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/transacoes/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"transacoes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Criar transação",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"valor\": 150.75,\n  \"codigoTransacao\": \"123ABC456\",\n  \"pagamentoId\": 1\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/transacoes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"transacoes"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
