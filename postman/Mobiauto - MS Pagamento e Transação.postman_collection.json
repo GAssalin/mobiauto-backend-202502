@@ -244,6 +244,26 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Excluir pedido Copy",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/transacoes/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"transacoes",
+								"1"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		}
